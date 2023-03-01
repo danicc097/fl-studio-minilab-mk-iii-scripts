@@ -133,6 +133,10 @@ def init() :
     _mk3.connexion().DAWConnexion()
     print("### Successfully created class objects ###")
 
+    global old_pitch
+    old_pitch = 0
+
+
 
 # Handles the script when FL Studio closes
 
@@ -190,10 +194,17 @@ def OnIdle():
     _mk3.Idle()
 
 
-
 def OnPitchBend(event) :
+    global old_pitch
 
-    print((event.data2-64)*(200/64))
+    pitch = (event.data2-64)*(200/64)
+    if pitch == 0: # releasing press
+        if old_pitch > 0:
+            ui.up()
+        else:
+            ui.down()
+    old_pitch = pitch
+
     if channels.selectedChannel(1) != -1 :
         if plugins.isValid(channels.selectedChannel()) :
             if plugins.getPluginName(channels.selectedChannel()) not in ArturiaVCOL.V_COL :
