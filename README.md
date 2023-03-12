@@ -13,7 +13,3 @@ to check FLStudio available functionality
 
 https://forum.image-line.com/viewtopic.php?p=1490365#p1490365
 
-## TODO
-
-- remap touch pitch up/down sections to up/down (see knob code) and knob itself
-up/down to left/right
