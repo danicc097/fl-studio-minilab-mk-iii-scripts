@@ -484,6 +484,9 @@ class MiniLabMidiProcessor:
         print("data1: "+ str(event.data1))
         print("data2: "+ str(event.data2))
 
+        if event.data1 == 1: # modwheel
+            ui.enter() # could have multiple keys based on data2 (up/center/down for example)
+            return
         if event.data1 != 29 :
             if ui.getFocused(WidPlugin) :
                 global DISPLAY_TYPE
