@@ -238,6 +238,9 @@ class MiniLabMidiProcessor:
         self._midi_command_dispatcher.Dispatch(event)
 
     def OnWheelEvent(self, event):
+
+        print("OnWheelEvent here")
+
         self._wheel_dispatcher.Dispatch(event)
 
     def OnKnobEvent(self, event):
@@ -476,6 +479,10 @@ class MiniLabMidiProcessor:
 
         global UPDATE_KNOB
         global KNOB_HW_VALUE
+
+        print("status: "+ str(event.status))
+        print("data1: "+ str(event.data1))
+        print("data2: "+ str(event.data2))
 
         if event.data1 != 29 :
             if ui.getFocused(WidPlugin) :
